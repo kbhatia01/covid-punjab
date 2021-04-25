@@ -6,6 +6,7 @@ const uri = "mongodb+srv://123000:123000@cluster0.f9dhi.mongodb.net/myFirstDatab
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const assert = require('assert');
 var need
+var cors = require('cors')
 var moment = require('moment');
 var supply
 client.connect(err => {
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+app.use(cors())
 
 // parse application/vnd.api+json as json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
