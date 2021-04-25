@@ -34,8 +34,6 @@ app.get('/need/:city', (req, res) => {
         var city = req.params.city
         data = need.find({ city: city, category: category, active:true }).sort({last:-1}).toArray(function (err, docs) {
             assert.equal(err, null);
-            console.log('Found the following records');
-            console.log(docs);
             return res.json({ data: docs })
         })
     }
@@ -52,8 +50,6 @@ app.get('/supply/:city', (req, res) => {
         var city = req.params.city
         data = supply.find({ city: city, category: category, active:true }).sort({last:-1}).toArray(function (err, docs) {
             assert.equal(err, null);
-            console.log('Found the following records');
-            console.log(docs);
             return res.json({ data: docs })
         })
     }
@@ -71,7 +67,6 @@ app.post('/addsupply', (req, res) => {
 
     if (!body.number || !body.name || !body.city || !body.state  || !body.category) {
         console.log(!body.number , !body.name , !body.city ,!body.state  , !body.category)
-        console.log(body.city)
         return res.status(500).json({ error: "name, category and number required" })
     }
     body.time = new Date()
@@ -112,7 +107,6 @@ app.put('/supply', (req, res) => {
 
     if (!body.number || !body.name || !body.city || !body.state  || !body.category) {
         console.log(!body.number , !body.name , !body.city ,!body.state  , !body.category)
-        console.log(body.city)
         return res.status(500).json({ error: "name, category and number required" })
     }
     body.last = new Date()
