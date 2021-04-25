@@ -32,7 +32,7 @@ app.get('/need/:city', (req, res) => {
     try {
         var category = req.query.category
         var city = req.params.city
-        data = need.find({ city: city, category: category, active:true }).sort({last:-1}).toArray(function (err, docs) {
+        data = need.find({ city: { $regex : new RegExp(city, "i") }, category: { $regex : new RegExp(category, "i") }, active:true }).sort({last:-1}).toArray(function (err, docs) {
             assert.equal(err, null);
             return res.json({ data: docs })
         })
@@ -48,7 +48,7 @@ app.get('/supply/:city', (req, res) => {
     try {
         var category = req.query.category
         var city = req.params.city
-        data = supply.find({ city: city, category: category, active:true }).sort({last:-1}).toArray(function (err, docs) {
+        data = supply.find({ city: { $regex : new RegExp(city, "i") }, category: { $regex : new RegExp(category, "i") }, active:true }).sort({last:-1}).toArray(function (err, docs) {
             assert.equal(err, null);
             return res.json({ data: docs })
         })
