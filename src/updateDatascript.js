@@ -8,7 +8,7 @@ const axios = require('axios');
 const baseUlr = 'https://life-api.coronasafe.network/data/'
 const urls = ['medicine', 'hospital_clinic_centre', 'oxygen']
 let key_values = {
-    'medicine': 'medicine',
+    'medicine': 'medicines',
     'hospital_clinic_centre': 'beds',
     'oxygen': 'oxygen'
 }
