@@ -88,7 +88,12 @@ async function fetchData() {
                 }
 
                 if (insert_data && insert_data.number)
+                    try{
                    await supply.updateOne({ id: item.id }, { $set: insert_data }, { upsert: true })
+                }
+                catch(e){
+                    console.log(e)
+                }
             }
         }
     }
